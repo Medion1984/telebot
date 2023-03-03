@@ -1,0 +1,23 @@
+.with_controls{
+    display: flex;
+    justify-content: space-between;
+}
+.with_controls p {
+    margin: 0;
+}
+.not_active {
+    color: var(--danger);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #007bff;
+    border-color: #006fe6;
+    color: #fff;
+}
+.div__image{
+    width: 80px;
+    height: 80px;
+}
+.product__image{
+    width: 100%;
+    object-fit: cover;
+}
