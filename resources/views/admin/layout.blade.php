@@ -216,7 +216,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Версия</b> 1.0.0 Бета тест
     </div>
-    <strong>Копирайт &copy; 2012-2023<a href="https://welding.kg">Усталар</a>.</strong>
+    <strong>Копирайт &copy; 2012-2023<a href="https://welding.kg">Устаке</a>.</strong>
   </footer>
 
 </div>
