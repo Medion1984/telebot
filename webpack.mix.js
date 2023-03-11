@@ -10,6 +10,7 @@ mix.styles([
 
 mix.scripts([
     'resources/admin/plugins/jquery/jquery.min.js',
+    'resources/admin/plugins/inputmask/jquery.inputmask.min.js',
     'resources/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
     'resources/admin/plugins/select2/js/select2.full.min.js',
     'resources/admin/dist/js/adminlte.js'
@@ -25,6 +26,7 @@ mix.styles([
 
 mix.scripts([
     'resources/admin/plugins/jquery/jquery.min.js',
+    'resources/admin/plugins/inputmask/jquery.inputmask.min.js',
     'resources/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
     'resources/admin/dist/js/adminlte.js'
 ], 'public/js/front.js');

@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('depth')->nullable();
             $table->string('name', 255);
             $table->string('slug', 255);
-            $table->integer('status')->default(0);
+            $table->integer('status')->nullable();
             $table->integer('sort')->default(0);
           });
     }

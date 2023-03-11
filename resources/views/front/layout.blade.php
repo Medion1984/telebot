@@ -45,7 +45,7 @@
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link"  href="/register">
+          <a class="nav-link"  href="/login">
             <i class="fas fa-user-slash"></i>
             <!-- <i class="fas fa-user-check"></i> -->
           </a>
@@ -73,5 +73,6 @@
 <!-- ./wrapper -->
 
 <script src="/js/front.js"></script>
+@yield('custom_script')
 </body>
 </html>

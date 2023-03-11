@@ -18,10 +18,12 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->integer('category')->nullable();
-            $table->integer('owner')->nullable();
-            $table->string('image', 255);
             $table->integer('price')->nullable();
-            $table->integer('price_sale')->nullable();
+            $table->integer('price_sell')->nullable();
+            $table->string('measure')->nullable();
+	        $table->json('materials')->nullable();
+            $table->integer('status')->nullable();
+            $table->integer('popular')->nullable();
             $table->timestamps();
         });
     }

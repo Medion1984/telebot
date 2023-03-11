@@ -54,6 +54,6 @@ class MainController extends Controller
     }
     public function register(Request $request)
     {
-        return view('front.register');
+        dd($request->all());
     }
 }
