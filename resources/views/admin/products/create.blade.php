@@ -29,6 +29,10 @@
                     <input type="text" class="form-control" id="productName" name="name" value="{{old('name')}}">
                   </div>
                   <div class="form-group">
+                    <label for="description">Краткое описание</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{old('description')}}">
+                  </div>
+                  <div class="form-group">
                     <label for="price">Цена себестоимости товара</label>
                     <input type="number" class="form-control" id="price" name="price" value="0">
                   </div>
@@ -44,6 +48,15 @@
                         ['class' => 'form-control', 'placeholder' => 'Единица измерения'])
                       }}
                   </div>
+                  <div class="form-group">
+                    <label>Заметки</label>
+                    {{Form::select('notices[]', 
+                        $notices, 
+                        null, 
+                        ['class' => 'form-control select2','multiple' => 'multiple', 'data-placeholder' => 'Заметки'])
+                      }}
+                  </div>
+
                   <div class="form-group">
                     <label>Родительская категория</label>
                     <select name="category" class="form-control">

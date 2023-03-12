@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Notice;
 use App\MaterialCategory;
 
 class ProductController extends Controller
@@ -19,13 +20,15 @@ class ProductController extends Controller
 
     public function create()
     {
-        $materials = MaterialCategory::all()->toHierarchy();
+        $materials = MaterialCategory::where('status', '!=', null)->get()->toHierarchy();
 
         $measure = Product::getMeasure();
 
         $categories = Category::all()->toHierarchy();
 
-        return view('admin.products.create', compact('categories', 'materials', 'measure'));
+        $notices = Notice::pluck('description', 'id')->all();;
+
+        return view('admin.products.create', compact('categories', 'materials', 'measure','notices'));
     }
 
     public function store(Request $request)
@@ -35,8 +38,9 @@ class ProductController extends Controller
             'category'   =>  'required'
         ]);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','description']);
         $fields['materials'] = json_encode($request->get('materials'));
+        $fields['notices'] = json_encode($request->get('notices'));
 
         $result = Product::create($fields);
         
@@ -75,11 +79,15 @@ class ProductController extends Controller
 
         $selected = json_decode($product->materials);
 
+        $sel_notices = json_decode($product->notices);
+
         $measure = Product::getMeasure();
 
         $materials = MaterialCategory::all()->toHierarchy();
 
-        return view('admin.products.edit', compact('categories','materials', 'product', 'selected', 'measure'));
+        $notices = Notice::pluck('description', 'id')->all();;
+
+        return view('admin.products.edit', compact('categories','materials', 'product', 'selected', 'measure','notices','sel_notices'));
     }
 
     public function update(Request $request, $id)
@@ -91,8 +99,9 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices']);
         $fields['materials'] = json_encode($request->get('materials'));
+        $fields['notices'] = json_encode($request->get('notices'));
 
         $product->update($fields);
         

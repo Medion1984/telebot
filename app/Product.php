@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $imageSize = 300;
 
-    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure'];
+    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure','description','notices'];
     
     public function sluggable()
     {
@@ -26,9 +26,9 @@ class Product extends Model
     public static function getMeasure()
     {
         return [
-            1 => 'За ед.',
-            2 => 'За кв. метр',
-            3 => 'За пог. метр'
+            1 => 'ед.',
+            2 => 'кв. метр',
+            3 => 'пог. метр'
         ];
     }
     public function categories()

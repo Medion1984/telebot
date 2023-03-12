@@ -29,6 +29,10 @@
                     <input type="text" class="form-control" id="productName" name="name" value="{{$product->name}}">
                   </div>
                   <div class="form-group">
+                    <label for="description">Краткое описание</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{$product->description}}">
+                  </div>
+                  <div class="form-group">
                     <label for="price">Цена себестоимости товара</label>
                     <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}">
                   </div>
@@ -43,6 +47,14 @@
                         $product->measure, 
                         ['class' => 'form-control', 'placeholder' => 'Нет'])
                       }}
+                  </div>
+                  <div class="form-group">
+                    <label>Заметки</label>
+                    {{ Form::select('notices[]',
+                      $notices,
+                      $sel_notices,
+                      ['class' => 'form-control select2', 'multiple' => 'multiple', 'data-placeholder' => 'Выберите заметки']
+                    )}}
                   </div>
                   <div class="form-group">
                     <label>Родительская категория</label>
