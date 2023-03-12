@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\User;
+use Auth;
 
 class MainController extends Controller
 {
@@ -24,10 +26,6 @@ class MainController extends Controller
 
         return view('front.show', compact('product', 'category'));
     }
-    public function cart()
-    {
-        return view('front.cart');
-    }
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
@@ -35,10 +33,6 @@ class MainController extends Controller
         $products = $category->products;
 
         return view('front.category', compact('products', 'category'));
-    }
-    public function favorite()
-    {
-        return view('front.favorite');
     }
     public function loginForm()
     {
@@ -50,10 +44,45 @@ class MainController extends Controller
     }
     public function login(Request $request)
     {
-        return view('front.login');
+        $this->validate($request, [
+            'phone' => 'required',
+            'password' => 'required'
+        ]);
+
+        $result = Auth::attempt([
+            'phone' => $request->get('phone'),
+            'password' => $request->get('password')
+        ]);
+        if($result){
+            return redirect('/');
+        }
+        return redirect()->back()->with('status', 'Неправильный телефон или пароль');
     }
     public function register(Request $request)
     {
-        dd($request->all());
+        $this->validate($request, [
+            'name' => 'required|string|min:3|max:50|unique:users',
+            'email' => 'email|unique:users',
+            'phone' => 'required|unique:users',
+            'password' => 'confirmed|min:6'
+        ]);
+
+        $user = User::add($request->all());
+        $user->generatePassword($request->get('password'));
+
+        return redirect('/login')->with('status', 'Вы успешно зарегистрировались!!!');
+    }
+    public function cart()
+    {
+        return view('front.cart');
+    }
+    public function favorite()
+    {
+        return view('front.favorite');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

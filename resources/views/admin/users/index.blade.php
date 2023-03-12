@@ -44,7 +44,11 @@
                           Телефон
                       </th>
                       <th>
-                          Статус
+                          Емайл
+                      </th>
+                      <th>                          
+                      </th>
+                      <th style="width: 2%">
                       </th>
                   </tr>
               </thead>
@@ -54,15 +58,27 @@
                       <td>
                           {{ $user->id }}
                       </td>
-                      <td>
+                      @if($user->status === null)
+                        <td class="text-danger">
+                      @else 
+                        <td>
+                      @endif
                           {{ $user ->name }}
                       </td>
                       <td>
                           {{ $user->phone }}
                       </td>
                       <td>
-                          {{ $user->status }}
+                          {{ $user->email }}
                       </td>
+                      <td class="text-center">
+                        <a href="{{ route('users.edit' , $user->id)}}" class="fas fa-eye primary"></a>
+                      </td>
+                      <td>
+                        @if($user->is_admin !== null)
+                        Админ
+                        @endif
+                      <td>
                   </tr>
                   @endforeach
               </tbody>

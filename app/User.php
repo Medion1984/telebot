@@ -8,19 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     protected $fillable = [
-        'name', 'email', 'password', 'phone'
+        'name', 'email', 'phone', 'status', 'is_admin'
     ];
 
     protected $hidden = [
-        'password', 'remember_token'
+        'password'
     ];
-    public static function generatePassword($password)
+
+    public function generatePassword($password)
     {
         if($password != null){
-            return bcrypt($password);
+            $this->password = bcrypt($password);
+            $this->save();
         }
-        return false;
     }
+    
     public function orders()
     {
         return $this->hasMany(Order::class);

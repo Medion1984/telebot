@@ -43,13 +43,19 @@
             <span class="badge badge-danger navbar-badge">0</span>
           </a>
         </li>
-        <!-- Notifications Dropdown Menu -->
+        @if(Auth::check())
         <li class="nav-item dropdown">
-          <a class="nav-link"  href="/login">
-            <i class="fas fa-user-slash"></i>
-            <!-- <i class="fas fa-user-check"></i> -->
+          <a class="nav-link"  href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
+        @else
+        <li class="nav-item dropdown">
+          <a class="nav-link"  href="/login">
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+        </li>
+        @endif
       </ul>
     </div>
   </nav>

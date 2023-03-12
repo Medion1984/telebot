@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Создать пользователя</h1>
+            <h1>Редактировать пользователя</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -22,37 +22,37 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             @include('admin.errors')
-          {{ Form::open(['route' => 'users.store']) }}
+            {!! Form::open(['route' => ['users.update', $user->id], 'method' => 'put']) !!}
             <div class="card-body">
             <div class="form-group">
-                  <label>Введите логин</label>
+                  <label>Имя пользователя</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="name" value="{{old('name')}}">
+                    <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Введите email</label>
+                  <label>Емайл пользователя</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                     </div>
-                    <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                    <input type="text" class="form-control" name="email" value="{{ $user->email }}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Введите номер телефона</label>
+                  <label>Телефон пользователя</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
-                    <input type="text" name="phone" class="form-control" data-inputmask="&quot;mask&quot;: &quot;0 (999) 99-99-99&quot;" data-mask="" inputmode="text" placeholder="___-__-__-__ " value="{{old('phone')}}">
+                    <input type="text" name="phone" class="form-control" data-inputmask="&quot;mask&quot;: &quot;0 (999) 99-99-99&quot;" data-mask="" inputmode="text" placeholder="___-__-__-__ " value="{{ $user->phone }}">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Введите пароль</label>
+                  <label>Новый пароль</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -60,29 +60,20 @@
                     <input type="password" class="form-control" name="password">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label>Повторите пароль</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    </div>
-                    <input type="password" class="form-control" name="password_confirmation">
-                  </div>
-                </div>
                   <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
-                        <input type="checkbox" id="checkbox" name="status" value="1">
+                      {{ Form::checkbox('status', '1', $user->status, ['id' => 'checkbox'])}}
                         <label for="checkbox">Статус </label>
                       </div>
                     </div>
                   <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
-                        <input type="checkbox" id="check" name="is_admin" value="1">
+                      {{ Form::checkbox('is_admin', '1', $user->is_admin, ['id' => 'check'])}}
                         <label for="check">Админ</label>
                       </div>
                     </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Создать пользователя</button>
+                  <button type="submit" class="btn btn-primary">Редактировать пользователя</button>
                 </div>
           {{ Form::close() }}
         </div>
