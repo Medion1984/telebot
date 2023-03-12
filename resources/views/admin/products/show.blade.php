@@ -47,7 +47,9 @@
                       <th>
                           Продажа
                       </th>
-                      <th style="width: 20%">
+                      <th>
+                      </th>
+                      <th>
                       </th>
                   </tr>
               </thead>
@@ -74,14 +76,19 @@
                       <td>
                           {{ $product->price_sale }}
                       </td>
+                      <td>
+                        @if($product->hit != null)
+                          <p class="text-warning"> хит </p>
+                        @elseif($product->action != null)
+                          <p class="text-danger"> акция </p>
+                        @endif
+                      </td>
                       <td class="project-actions text-right">
                           <a class="btn btn-info btn-sm" href="{{ route('products.edit', $product->id) }}">
                               <i class="fas fa-pencil-alt"></i>
-                              Ред.
                           </a>
                           <a class="btn btn-info btn-sm" href="{{ route('products.photo', $product->id) }}">
                               <i class="far fa-image"></i>
-                              Картинка
                           </a>
                       </td>
                   </tr>

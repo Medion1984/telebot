@@ -14,9 +14,11 @@ class MainController extends Controller
     {
         $products = Product::getPopularProducts();
 
+        $measures = Product::getMeasure();
+
         $menu = Category::allLeaves()->where('status', '!=', null)->get();
 
-        return view('front.index', compact('products','menu'));
+        return view('front.index', compact('products','menu', 'measures'));
     }
     public function show($slug)
     {

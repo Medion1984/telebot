@@ -80,6 +80,18 @@
                         <label for="checkbox2">Популярный товар</label>
                       </div>
                     </div>
+                    <div class="form-group clearfix">
+                      <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkbox3" name="action" value="1">
+                        <label for="checkbox3">Акция</label>
+                      </div>
+                    </div>
+                    <div class="form-group clearfix">
+                      <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkbox4" name="hit" value="1">
+                        <label for="checkbox4">Хит</label>
+                      </div>
+                    </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Создать товар</button>
                 </div>

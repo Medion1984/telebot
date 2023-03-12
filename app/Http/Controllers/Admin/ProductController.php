@@ -38,7 +38,7 @@ class ProductController extends Controller
             'category'   =>  'required'
         ]);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','description']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','description','action','hit']);
         $fields['materials'] = json_encode($request->get('materials'));
         $fields['notices'] = json_encode($request->get('notices'));
 
@@ -83,7 +83,7 @@ class ProductController extends Controller
 
         $measure = Product::getMeasure();
 
-        $materials = MaterialCategory::all()->toHierarchy();
+        $materials = MaterialCategory::where('status', '!=', null)->get()->toHierarchy();
 
         $notices = Notice::pluck('description', 'id')->all();;
 
@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices', 'action','hit']);
         $fields['materials'] = json_encode($request->get('materials'));
         $fields['notices'] = json_encode($request->get('notices'));
 

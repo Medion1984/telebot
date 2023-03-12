@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $imageSize = 300;
 
-    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure','description','notices'];
+    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure','description','notices','action','hit'];
     
     public function sluggable()
     {

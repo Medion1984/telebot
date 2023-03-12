@@ -81,6 +81,20 @@
                         <label for="checkbox2">Популярный товар</label>
                       </div>
                     </div>
+                  <div class="form-group clearfix">
+                      <div class="icheck-primary d-inline">
+                        @php $product->action != null ? $action = 'checked' : $action = ''; @endphp
+                        <input type="checkbox" id="checkbox3" name="action" value="1" {{ $action }}>
+                        <label for="checkbox3">Акция</label>
+                      </div>
+                    </div>
+                  <div class="form-group clearfix">
+                      <div class="icheck-primary d-inline">
+                        @php $product->hit != null ? $hit = 'checked' : $hit = ''; @endphp
+                        <input type="checkbox" id="checkbox4" name="hit" value="1" {{ $hit }}>
+                        <label for="checkbox4">Хит</label>
+                      </div>
+                    </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Редактировать товар</button>
                 </div>

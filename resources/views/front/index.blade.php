@@ -17,19 +17,24 @@
                     <div class="text-center">
                         <img class="prod-img" src="{{ $product->getImage() }}" alt="">
                     </div>
+                    @if($product->hit != null)
                     <div class="ribbon-wrapper ribbon-xl">
                         <div class="ribbon bg-warning text-lg">
                           хит
                         </div>
                       </div>
-
+                    @elseif($product->action != null)
+                    <div class="ribbon-wrapper ribbon-xl">
+                        <div class="ribbon bg-danger text-lg">
+                          акция
+                        </div>
+                      </div>
+                    @endif
                     <h3 class="profile-username text-center">{{ $product->name }}</h3>
-
-                    <!-- <p class="text-muted text-center">Software Engineer</p> -->
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item text-center">
-                            <b>Цена @money($product->price_sale)</b>
+                            <b>Цена @money($product->price_sale) {{$measures[$product->measure]}}</b>
                         </li>
                     </ul>
 
@@ -42,10 +47,6 @@
                        <i class="fas fa-eye"></i>
                           Посмотреть
                         </a>
-                      <a href="#" class="btn btn-success">
-                        <i class="fas fa-heart"></i>
-                        Избранное
-                      </a>
                     </div>
                 </div>
                 <!-- /.card-body -->
