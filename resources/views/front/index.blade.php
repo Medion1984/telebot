@@ -39,9 +39,9 @@
                     </ul>
 
                     <div class="btn-group w-100">
-                      <a href="#" class="btn btn-success">
+                      <a href="{{route('cart', $product->slug )}}" class="btn btn-success">
                       <i class="fas fa-shopping-cart"></i>
-                         Добавить
+                         Заказать
                       </a>
                       <a href="{{ route('show', $product->slug)}}" class="btn btn-primary">
                        <i class="fas fa-eye"></i>

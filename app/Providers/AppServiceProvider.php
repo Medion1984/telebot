@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Blade::directive('money', function ($money) {
-            return "<?= number_format($money, 2); ?>";
+            return "<?= number_format($money, 2, '.', ' ')?>";
         });
         View::composer('front.parts.nav-menu', function($view){
             $view->with(['categories' => Category::where('status','!=', null)->orderBy('sort')->get()->toHierarchy()]);

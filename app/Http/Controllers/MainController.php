@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\User;
+use App\Material;
+use App\Notice;
 use Auth;
 
 class MainController extends Controller
@@ -26,7 +28,13 @@ class MainController extends Controller
 
         $category = $product->categories->name;
 
-        return view('front.show', compact('product', 'category'));
+        $measure = Product::getMeasure()[$product->measure];
+
+        $materials = Material::whereIn('id', json_decode($product->materials))->orderBy('category_material')->get();
+
+        $notices = Notice::whereIn('id', json_decode($product->notices))->get();
+
+        return view('front.show', compact('product', 'category', 'materials','measure','notices'));
     }
     public function category($slug)
     {
@@ -58,7 +66,7 @@ class MainController extends Controller
         if($result){
             return redirect('/');
         }
-        return redirect()->back()->with('status', 'Неправильный телефон или пароль');
+        return redirect()->back()->with('error', 'Неправильный телефон или пароль');
     }
     public function register(Request $request)
     {
@@ -72,15 +80,11 @@ class MainController extends Controller
         $user = User::add($request->all());
         $user->generatePassword($request->get('password'));
 
-        return redirect('/login')->with('status', 'Вы успешно зарегистрировались!!!');
+        return redirect('/login')->with('success', 'Вы успешно зарегистрировались!!!');
     }
     public function cart()
     {
         return view('front.cart');
-    }
-    public function favorite()
-    {
-        return view('front.favorite');
     }
     public function logout()
     {

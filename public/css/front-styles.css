@@ -41,3 +41,6 @@
 .btn-block + .btn-block{
     margin-top: 0;
 }
+.btn-group > .colors{
+    flex: 0 0 auto;
+}

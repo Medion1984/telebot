@@ -11,10 +11,15 @@
               {!! Form::open(['route' => 'login']) !!}
               <div class="card-body">
                 @include('front.errors')
-                @if(session('status'))
+                @if(session('success'))
+                <div class="alert alert-success alert-dismissible">
+                  <h7><i class="icon fas fa-ban"></i></h7>
+                    {{session('success')}}
+                </div>
+                @elseif(session('error'))
                 <div class="alert alert-danger alert-dismissible">
-                  <h7><i class="icon fas fa-ban"></i>Ошибка</h7>
-                    {{session('status')}}
+                  <h7><i class="icon fas fa-ban"></i></h7>
+                    {{session('error')}}
                 </div>
                 @endif
                 <div class="form-group">

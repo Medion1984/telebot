@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/show/{slug}', 'MainController@show')->name('show');
 Route::get('/', 'MainController@index');
-Route::get('/cart', 'MainController@cart');
+Route::get('/cart/{slug}', 'MainController@cart')->name('cart');
 Route::get('/category/{slug}', 'MainController@category')->name('category.products');
 Route::get('/logout', 'MainController@logout');
 
@@ -29,7 +29,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function (){
 
 // Route::group(['middleware' => 'auth'], function(){
 //     Route::get('/logout', 'MainController@logout');
-//     Route::get('/favorite', 'MainController@favorite');
 // });
 // Route::group(['middleware' => 'guest'], function(){
 //     Route::get('/login', 'MainController@loginForm')->name('login');

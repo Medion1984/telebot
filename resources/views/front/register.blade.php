@@ -10,6 +10,7 @@
               </div>
               {!! Form::open(['route' => 'register']) !!}
               <div class="card-body">
+                @include('front.errors')
                 <div class="form-group">
                   <label>Введите логин</label>
                   <div class="input-group">
