@@ -44,3 +44,7 @@
 .btn-group > .colors{
     flex: 0 0 auto;
 }
+.cart-img{
+    max-height: 300px;
+    object-fit: cover;
+}

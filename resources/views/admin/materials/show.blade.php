@@ -37,7 +37,7 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Наименование материала</th>
+                      <th>Материала</th>
                       <th>Цена</th>
                       <th style="width: 40px"></th>
                     </tr>
@@ -51,7 +51,7 @@
                       <td>{{ $loop->iteration }}</td>
                       <td class="{{ $status }}">{{ $material->name }}</td>
                       <td><bold>{{ $material->price }}</bold></td>
-                      <td><a href="{{ route('materials.edit', $material->id) }}">Редактировать</a></td>
+                      <td><a href="{{ route('materials.edit', $material->id) }}">Ред. <a></td>
                     </tr>
                     @endforeach
                   </tbody>

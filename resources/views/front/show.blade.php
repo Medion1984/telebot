@@ -26,14 +26,20 @@
       <div class="card card-solid">
         <div class="card-body">
           <div class="row">
+            @if(session('success'))
+              <div class="alert alert-success alert-dismissible w-100">
+                <h7><i class="icon fas fa-ban"></i></h7>
+                  {{session('success')}}
+              </div>
+            @endif
             <div class="col-12 col-sm-6">
-              <h3 class="d-inline-block d-sm-none">{{$product->name}}</h3>
+              <h3 class="d-inline-block d-sm-none">{{$product->name}} {{ $product->marking }}</h3>
               <div class="col-12">
                 <img src="{{ $product->getImage() }}" class="product-image" alt="Product Image">
               </div>
             </div>
             <div class="col-12 col-sm-6">
-              <h3 class="my-3">{{$product->name}}</h3>
+              <h3 class="my-3">{{$product->name}} {{ $product->marking }}</h3>
               <p>{{ $product->description }}</p>
 
               <hr>
@@ -53,7 +59,7 @@
               </div>
 
               <div class="mt-4">
-                <a class="btn btn-primary btn-lg btn-flat" href="{{route('cart', $product->slug )}}">
+                <a class="btn btn-primary btn-lg btn-flat" href="{{route('ordering', $product->slug )}}">
                   <i class="fas fa-cart-plus fa-lg mr-2"></i>
                   Заказать
                 </a>

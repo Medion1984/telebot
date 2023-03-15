@@ -24,7 +24,7 @@
             @include('admin.errors')
             {!! Form::open(['route' => ['users.update', $user->id], 'method' => 'put']) !!}
             <div class="card-body">
-            <div class="form-group">
+                <div class="form-group">
                   <label>Имя пользователя</label>
                   <div class="input-group">
                     <div class="input-group-prepend">

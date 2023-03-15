@@ -31,27 +31,17 @@
       </div>
 
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link"  href="/favorite">
-            <i class="fas fa-heart"></i>
-            <span class="badge badge-danger navbar-badge">0</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="/cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="badge badge-danger navbar-badge">0</span>
-          </a>
-        </li>
         @if(Auth::check())
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a class="nav-link"  href="/logout">
+            Выйти
             <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
         @else
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a class="nav-link"  href="/login">
+            Войти
             <i class="fas fa-sign-in-alt"></i>
           </a>
         </li>

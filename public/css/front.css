@@ -32758,11 +32758,11 @@ html.maximized-card {
   text-decoration: underline;
 }
 
-.alert-primary {
+/* .alert-primary {
   color: #fff;
   background-color: #007bff;
   border-color: #006fe6;
-}
+} */
 
 .alert-default-primary {
   color: #004085;

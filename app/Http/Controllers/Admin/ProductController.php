@@ -43,6 +43,7 @@ class ProductController extends Controller
         $fields['notices'] = json_encode($request->get('notices'));
 
         $result = Product::create($fields);
+        $result->generateMarking();
         
         return redirect()->route('products.show', $result->category);
     }
@@ -99,11 +100,12 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices', 'action','hit']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices', 'action','hit','description']);
         $fields['materials'] = json_encode($request->get('materials'));
         $fields['notices'] = json_encode($request->get('notices'));
 
         $product->update($fields);
+        $product->generateMarking();
         
         return redirect()->route('products.show', $product->category);   
     }

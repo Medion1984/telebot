@@ -43,7 +43,7 @@
                     <tr>
                       <td>{{ $notice->id }}</td>
                       <td>{{ $notice->description }}</td>
-                      <td><a href="{{ route('notices.edit', $notice->id) }}">Редактировать</a></td>
+                      <td><a href="{{ route('notices.edit', $notice->id) }}">Ред.</a></td>
                     </tr>
                     @endforeach
                   </tbody>

@@ -10,7 +10,7 @@ $category->status == null ? $status = 'not_active' : $status = '';
                 <td class="with_controls">
                     <p class="{{ $status }}">{{$category->name }}</p>
                     <div class="controls">
-                        <a href="{{ route('material_category.edit', $category->id)}}">Редактировать</a>
+                        <a href="{{ route('material_category.edit', $category->id)}}">Ред.</a>
                     </div>
                 </td>
             </tr>
@@ -22,7 +22,7 @@ $category->status == null ? $status = 'not_active' : $status = '';
                         {{$category->name }}
                     </div>
                     <div class="controls">
-                        <a href="{{ route('material_category.edit', $category->id)}}">Редактировать</a>
+                        <a href="{{ route('material_category.edit', $category->id)}}">Ред.</a>
                     </div>
                 </td>
             </tr>

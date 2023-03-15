@@ -31,6 +31,10 @@ class Product extends Model
             3 => 'пог. метр'
         ];
     }
+    public function getMeasureText()
+    {
+        return self::getMeasure()[$this->measure];
+    }
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category');
@@ -54,5 +58,14 @@ class Product extends Model
     public static function getPopularProducts()
     {   
         return self::where('popular', '!=', null)->where('status', '!=', null)->get();
+    }
+    public function generateMarking()
+    {
+        $name = $this->slug;
+        $category = $this->categories->slug;
+        $id = $this->id;
+        $marking = substr($category, 0, 3) . substr($name, 0, 1) . $id;
+        $this->marking = strtoupper($marking);
+        $this->save();
     }
 }

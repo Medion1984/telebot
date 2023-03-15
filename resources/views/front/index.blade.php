@@ -30,7 +30,7 @@
                         </div>
                       </div>
                     @endif
-                    <h3 class="profile-username text-center">{{ $product->name }}</h3>
+                    <h3 class="profile-username text-center">{{ $product->name }} {{ $product->marking }}</h3>
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item text-center">
@@ -39,7 +39,7 @@
                     </ul>
 
                     <div class="btn-group w-100">
-                      <a href="{{route('cart', $product->slug )}}" class="btn btn-success">
+                      <a href="{{route('ordering', $product->slug )}}" class="btn btn-success">
                       <i class="fas fa-shopping-cart"></i>
                          Заказать
                       </a>

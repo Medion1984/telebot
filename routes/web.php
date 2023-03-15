@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/show/{slug}', 'MainController@show')->name('show');
 Route::get('/', 'MainController@index');
-Route::get('/cart/{slug}', 'MainController@cart')->name('cart');
+Route::get('/ordering/{slug}', 'MainController@cart')->name('ordering');
 Route::get('/category/{slug}', 'MainController@category')->name('category.products');
 Route::get('/logout', 'MainController@logout');
+Route::post('/ordering/{slug}', 'MainController@ordering');
 
 Route::get('/login', 'MainController@loginForm')->name('login');
 Route::get('/register', 'MainController@registerForm')->name('register');

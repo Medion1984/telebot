@@ -28,7 +28,7 @@
         <div class="card-header">
           <h3 class="card-title">Товары</h3>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body table-responsive p-0">
           <table class="table table-striped projects">
               <thead>
                   <tr>
@@ -78,18 +78,16 @@
                       </td>
                       <td>
                         @if($product->hit != null)
-                          <p class="text-warning"> хит </p>
+                          <p class="text-warning m-0"> хит </p>
                         @elseif($product->action != null)
-                          <p class="text-danger"> акция </p>
+                          <p class="text-danger m-0"> акция </p>
                         @endif
                       </td>
-                      <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="{{ route('products.edit', $product->id) }}">
-                              <i class="fas fa-pencil-alt"></i>
-                          </a>
-                          <a class="btn btn-info btn-sm" href="{{ route('products.photo', $product->id) }}">
-                              <i class="far fa-image"></i>
-                          </a>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="{{ route('products.photo', $product->id) }}" class="btn btn-info"><i class="far fa-image"></i></a>
+                        </div>
                       </td>
                   </tr>
                   @endforeach

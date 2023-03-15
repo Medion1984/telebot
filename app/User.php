@@ -40,4 +40,10 @@ class User extends Authenticatable
         $this->fill($fields);
         $this->save();
     }
+    public function canMakeOrder()
+    {
+        $result = Order::canMakeOrder($this->phone);
+
+        return $result;
+    }
 }

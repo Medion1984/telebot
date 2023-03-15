@@ -8,6 +8,7 @@ use App\Product;
 use App\User;
 use App\Material;
 use App\Notice;
+use App\Order;
 use Auth;
 
 class MainController extends Controller
@@ -35,6 +36,16 @@ class MainController extends Controller
         $notices = Notice::whereIn('id', json_decode($product->notices))->get();
 
         return view('front.show', compact('product', 'category', 'materials','measure','notices'));
+    }
+    public function cart($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+
+        $measure = Product::getMeasure()[$product->measure];
+
+        $notices = Notice::whereIn('id', json_decode($product->notices))->get();
+
+        return view('front.cart', compact('product','measure','notices'));
     }
     public function category($slug)
     {
@@ -82,13 +93,37 @@ class MainController extends Controller
 
         return redirect('/login')->with('success', 'Вы успешно зарегистрировались!!!');
     }
-    public function cart()
-    {
-        return view('front.cart');
-    }
     public function logout()
     {
         Auth::logout();
         return redirect('/');
+    }
+    public function ordering(Request $request , $slug)
+    {
+        $fields = [];
+        if(Auth::user() != null){
+            $this->validate($request, [
+                'address' => 'required|min:10'
+            ]);
+            $fields['address'] = $request->get('address');
+            $fields['owner'] = Auth::user()->name;
+            $fields['phone'] = Auth::user()->phone;
+        } else {
+            $this->validate($request, [
+                'owner' => 'required|min:3',
+                'phone' => 'required',
+                'address' => 'required|min:10'
+            ]);
+            $fields = $request->all();
+        }
+
+        if(Order::canMakeOrder($fields['phone'])) return redirect()->back()->with('error', 'You cant');
+
+        $fields['product'] = $slug;
+
+        if(Order::create($fields)){
+            return redirect()->route('show', $slug)->with('success', 'Вы успешно сделали заказ! Наш специалист свяжется с вами в ближайшее время.');
+        } 
+        return redirect()->back()->with('error', 'Что то пошло не так! Попробуйте позже!');
     }
 }
