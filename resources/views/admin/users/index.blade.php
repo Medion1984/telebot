@@ -56,7 +56,7 @@
                 @foreach($users as $user)
                   <tr>
                       <td>
-                          {{ $user->id }}
+                          {{ $loop->iteration }}
                       </td>
                       @if($user->status === null)
                         <td class="text-danger">

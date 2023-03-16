@@ -36,6 +36,10 @@ class Order extends Model
     {
         return Order::whereIn('status', [1,2])->get()->count();
     }
+    public static function getFinishedOrders()
+    {
+        return Order::where('status', 3)->get()->count();
+    }
     public function getProduct()
     {
         return Product::where('slug', $this->product)->first();
