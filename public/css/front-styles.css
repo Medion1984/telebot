@@ -48,3 +48,18 @@
     max-height: 300px;
     object-fit: cover;
 }
+.carxs{
+    min-height: 250px;
+}
+.carousel{
+    min-height: 250px;
+  }
+  .d-block{
+    min-height: 250px;
+    object-fit: cover;
+  }
+@media only screen and (max-width: 600px) {
+    .pxs0{
+        padding: 0;
+    }
+}

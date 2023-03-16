@@ -2,12 +2,16 @@
 
 @section('content')
 <div class="content-wrapper">
-    <div class="content-header">
-      <div class="container">
+    <div class="content-header pxs0">
+      <div class="container pxs0 carxs">
          @include('front.parts.carousel')
       </div><!-- /.container-fluid -->
     </div>
-    @include('front.parts.buttons-menu',['menu' => $menu])
+    <div class="content-header pxs0">
+      <div class="container my-2">
+        @include('front.parts.buttons-menu',['menu' => $menu])
+      </div>
+    </div>
 <div class="content">
     <div class="container">
         <div class="card-columns">

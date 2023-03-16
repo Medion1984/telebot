@@ -64,7 +64,7 @@
           <img src="/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ route('users.index') }}" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ route('users.index') }}" class="d-block">Medet</a>
         </div>
       </div>
 

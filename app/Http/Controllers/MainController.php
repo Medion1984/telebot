@@ -53,7 +53,9 @@ class MainController extends Controller
 
         $products = $category->products;
 
-        return view('front.category', compact('products', 'category'));
+        $measures = Product::getMeasure();
+
+        return view('front.category', compact('products', 'category', 'measures'));
     }
     public function loginForm()
     {
