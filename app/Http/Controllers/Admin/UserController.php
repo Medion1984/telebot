@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\User;
+use App\Visitor;
 
 class UserController extends Controller
 {
@@ -83,6 +84,11 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        
+        return true;
+    }
+    public function setUser()
+    {
+        $visitor = Visitor::create();
+        return $visitor->created_at;
     }
 }

@@ -9,14 +9,10 @@ use App\User;
 use App\Material;
 use App\Notice;
 use App\Order;
-use App\Visitor;
 use Auth;
 
 class MainController extends Controller
 {
-    public function __construct(){
-        Visitor::create();
-    }
     public function index()
     {
         $products = Product::getPopularProducts();

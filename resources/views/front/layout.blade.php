@@ -31,9 +31,16 @@
       </div>
 
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        @if(Auth::check() && Auth::user()->is_admin)
+        <li class="nav-item">
+          <a class="nav-link px-0"  href="{{ route('admin') }}">
+            Админка
+          </a>
+        </li>
+        @endif
         @if(Auth::check())
         <li class="nav-item">
-          <a class="nav-link"  href="/logout">
+          <a class="nav-link pr-0"  href="/logout">
             Выйти
             <i class="fas fa-sign-out-alt"></i>
           </a>
@@ -61,8 +68,7 @@
           <a href="#" class="text-primary"><i class="fas fa-phone-alt mr-2"></i><strong> 0 501 32 90 79</strong></a>
           <a href="#" class="text-primary"><i class="fab fa-telegram-plane mr-2"></i><strong> 0 501 32 90 79</strong></a>
       </div>
-      <!-- Default to the left -->
-      <strong>Copyright &copy; 2014-2023 <a href="/">Ustake</a>.</strong> 
+      <strong>&copy; 2014-2023 <a href="/">ИП Саабаев</a></strong> 
     </div>
   </footer>
 </div>

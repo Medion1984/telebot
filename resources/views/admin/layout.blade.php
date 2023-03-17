@@ -51,9 +51,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ '/admin' }}" class="brand-link">
-      <img src="/images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Админпанель</span>
+    <a href="{{ route('home') }}" class="brand-link">
+      <img src="/images/logomini.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">На сайт</span>
     </a>
 
     <!-- Sidebar -->
@@ -61,10 +61,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/images/logimini.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ route('users.index') }}" class="d-block">Medet</a>
+          <a href="{{ route('users.index') }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
             <a href="{{ route('products.index') }}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                Товары
+                Изделия
               </p>
             </a>
           </li>
