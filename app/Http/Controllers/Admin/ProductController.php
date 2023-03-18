@@ -38,7 +38,7 @@ class ProductController extends Controller
             'category'   =>  'required'
         ]);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','description','action','hit']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','description','action','hit','sort']);
         $fields['materials'] = json_encode($request->get('materials'));
         $fields['notices'] = json_encode($request->get('notices'));
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
     {
         $category = Category::find($id);
 
-        $products = $category->products;
+        $products = $category->products->sortBy('sort');
 
         return view('admin.products.show', compact('category','products'));
     }
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $selected = json_decode($product->materials);
+        $selected = $product->materials != "null" ? json_decode($product->materials) : [];
 
         $sel_notices = json_decode($product->notices);
 
@@ -100,7 +100,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices', 'action','hit','description']);
+        $fields = $request->all(['name','slug','status','category','price_sale','price','popular','measure','notices', 'action','hit','description','sort']);
         $fields['materials'] = json_encode($request->get('materials'));
         $fields['notices'] = json_encode($request->get('notices'));
 

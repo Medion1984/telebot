@@ -8,7 +8,7 @@ $category->status == null ? $status = 'not_active' : $status = '';
             @if($category->isLeaf())
             <tr>
                 <td class="with_controls">
-                    <p class="{{ $status }}">{{$category->name }}</p>
+                    <p class="{{ $status }}"><b>{{ $category->sort }} </b> {{$category->name }}</p>
                     <div class="controls">
                         <a href="{{ route('categories.edit', $category->id)}}">Ред.</a>
                     </div>

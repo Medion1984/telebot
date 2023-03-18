@@ -7,11 +7,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Редактировать товар</h1>
+            <h1>Редактировать изделие</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Упр товарами</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Упр. изделиями</a></li>
             </ol>
           </div>
         </div>
@@ -25,7 +25,7 @@
           {{ Form::open(['route' => ['products.update', $product->id ], 'method' => 'put']) }}
             <div class="card-body">
                   <div class="form-group">
-                    <label for="productName">Имя товара</label>
+                    <label for="productName">Имя изделия</label>
                     <input type="text" class="form-control" id="productName" name="name" value="{{$product->name}}">
                   </div>
                   <div class="form-group">
@@ -33,12 +33,16 @@
                     <input type="text" class="form-control" id="description" name="description" value="{{$product->description}}">
                   </div>
                   <div class="form-group">
-                    <label for="price">Цена себестоимости товара</label>
+                    <label for="price">Цена себестоимости изделия</label>
                     <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}">
                   </div>
                   <div class="form-group">
-                    <label for="price_sale">Цена продажи товара</label>
+                    <label for="price_sale">Цена продажи изделия</label>
                     <input type="number" class="form-control" id="price_sale" name="price_sale" value="{{ $product->price_sale }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="sort">Сортировка</label>
+                    <input type="number" class="form-control" id="sort" name="sort" value="{{$product->sort}}">
                   </div>
                   <div class="form-group">
                     <label>Единица измерения</label>
@@ -71,7 +75,7 @@
                       <div class="icheck-primary d-inline">
                         @php $product->status != null ? $status = 'checked' : $status = ''; @endphp
                         <input type="checkbox" id="checkbox" name="status" value="1" {{ $status }}>
-                        <label for="checkbox">Отображение товара</label>
+                        <label for="checkbox">Отображение изделия</label>
                       </div>
                     </div>
                   <div class="form-group clearfix">
@@ -96,7 +100,7 @@
                       </div>
                     </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Редактировать товар</button>
+                  <button type="submit" class="btn btn-primary">Редактировать изделие</button>
                 </div>
           {{ Form::close() }}
         </div>

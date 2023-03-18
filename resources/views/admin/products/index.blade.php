@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Товары по категориям</h1>
+            <h1>Изделия по категориям</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -17,7 +17,7 @@
         </div>
         <div class="row mb-2">
           <div class="col-sm-6">
-            <a href="{{ route('products.create') }}" class="btn btn-block bg-gradient-success">Добавить товар</a>
+            <a href="{{ route('products.create') }}" class="btn btn-block bg-gradient-success">Добавить изделие</a>
           </div>
         </div>
     </section>
@@ -27,7 +27,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Список товаров по категориям</h3>
+                <h3 class="card-title">Список изделий по категориям</h3>
               </div>
               <!-- ./card-header -->
               @include('admin.parts.cat_products')

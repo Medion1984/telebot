@@ -8,7 +8,7 @@
     <div class="card-body">
         @foreach($notices as $notice)
         <div>
-            <p><b>{{ $loop->iteration }}</b> {{ $notice->description }}</p>
+            <p><i class="far fa-dot-circle text-primary"></i> {{ $notice->description }}</p>
         </div>
         @endforeach
     </div>

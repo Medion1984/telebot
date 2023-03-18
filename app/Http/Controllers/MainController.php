@@ -31,9 +31,9 @@ class MainController extends Controller
 
         $measure = Product::getMeasure()[$product->measure];
 
-        $materials = Material::whereIn('id', json_decode($product->materials))->orderBy('category_material')->get();
+        $materials = $product->materials != "null" ? Material::whereIn('id', json_decode($product->materials))->orderBy('category_material')->get() : [];
 
-        $notices = Notice::whereIn('id', json_decode($product->notices))->get();
+        $notices = $product->notices != "null" ? Notice::whereIn('id', json_decode($product->notices))->get() : [];
 
         return view('front.show', compact('product', 'category', 'materials','measure','notices'));
     }
@@ -43,7 +43,7 @@ class MainController extends Controller
 
         $measure = Product::getMeasure()[$product->measure];
 
-        $notices = Notice::whereIn('id', json_decode($product->notices))->get();
+        $notices = $product->notices != "null" ? Notice::whereIn('id', json_decode($product->notices))->get() : [];
 
         return view('front.cart', compact('product','measure','notices'));
     }
@@ -51,7 +51,7 @@ class MainController extends Controller
     {
         $category = Category::where('slug', $slug)->firstOrFail();
 
-        $products = $category->products;
+        $products = $category->products->sortBy('sort');
 
         $measures = Product::getMeasure();
 
@@ -119,7 +119,7 @@ class MainController extends Controller
             $fields = $request->all();
         }
 
-        if(Order::canMakeOrder($fields['phone'])) return redirect()->back()->with('error', 'You cant');
+        if(Order::canMakeOrder($fields['phone'])) return redirect()->back()->with('error', 'В данный момент у вас есть незавершенные заказы. Чтобы сделать дополнительный заказ свяжитесь с нами удобным для вас способом.');
 
         $fields['product'] = $slug;
 

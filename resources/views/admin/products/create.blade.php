@@ -11,7 +11,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Товары</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Изделия</a></li>
             </ol>
           </div>
         </div>
@@ -25,7 +25,7 @@
           {{ Form::open(['route' => 'products.store']) }}
             <div class="card-body">
                   <div class="form-group">
-                    <label for="productName">Имя товара</label>
+                    <label for="productName">Имя изделия</label>
                     <input type="text" class="form-control" id="productName" name="name" value="{{old('name')}}">
                   </div>
                   <div class="form-group">
@@ -33,12 +33,16 @@
                     <input type="text" class="form-control" id="description" name="description" value="{{old('description')}}">
                   </div>
                   <div class="form-group">
-                    <label for="price">Цена себестоимости товара</label>
+                    <label for="price">Цена себестоимости изделия</label>
                     <input type="number" class="form-control" id="price" name="price" value="0">
                   </div>
                   <div class="form-group">
-                    <label for="price_sale">Цена продажи товара</label>
+                    <label for="price_sale">Цена продажи изделия</label>
                     <input type="number" class="form-control" id="price_sale" name="price_sale" value="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="sort">Сортировка</label>
+                    <input type="number" class="form-control" id="sort" name="sort" value="1">
                   </div>
                   <div class="form-group">
                     <label>Единица измерения</label>
@@ -60,7 +64,7 @@
                   <div class="form-group">
                     <label>Родительская категория</label>
                     <select name="category" class="form-control">
-                        <option selected="selected" value>Выберите категорию товара</option>
+                        <option selected="selected" value>Выберите категорию изделия</option>
                         @include('admin.parts.category', ['categories' => $categories])
                     </select>
                   </div>
@@ -71,13 +75,13 @@
                   <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
                         <input type="checkbox" id="checkbox" name="status" value="1">
-                        <label for="checkbox">Отображение товара</label>
+                        <label for="checkbox">Отображение изделия</label>
                       </div>
                     </div>
                     <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
                         <input type="checkbox" id="checkbox2" name="popular" value="1">
-                        <label for="checkbox2">Популярный товар</label>
+                        <label for="checkbox2">Популярный изделия</label>
                       </div>
                     </div>
                     <div class="form-group clearfix">
@@ -93,7 +97,7 @@
                       </div>
                     </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Создать товар</button>
+                  <button type="submit" class="btn btn-primary">Создать изделие</button>
                 </div>
           {{ Form::close() }}
         </div>

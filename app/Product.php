@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $imageSize = 300;
 
-    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure','description','notices','action','hit'];
+    protected $fillable = ['name','slug','status','category','price_sale','price', 'materials', 'popular','measure','description','notices','action','hit', 'sort'];
     
     public function sluggable()
     {
@@ -26,7 +26,8 @@ class Product extends Model
     public static function getMeasure()
     {
         return [
-            1 => 'ед.',
+            0 => '',
+            1 => 'единицу',
             2 => 'кв. метр',
             3 => 'пог. метр'
         ];
@@ -57,7 +58,7 @@ class Product extends Model
     }
     public static function getPopularProducts()
     {   
-        return self::where('popular', '!=', null)->where('status', '!=', null)->get();
+        return self::where('popular', '!=', null)->where('status', '!=', null)->get()->sortBy('sort');
     }
     public function generateMarking()
     {

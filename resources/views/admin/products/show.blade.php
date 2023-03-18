@@ -7,17 +7,17 @@
       <div class="container-fluid">
       <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Товары категории {{ $category->name }}</h1>
+            <h1>Изделия {{ $category->name }}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Упр. товарами</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Упр. изделиями</a></li>
             </ol>
           </div>
         </div>
         <div class="row mb-2">
           <div class="col-sm-6">
-            <a href="{{ route('products.create') }}" class="btn btn-block bg-gradient-success">Добавить товар</a>
+            <a href="{{ route('products.create') }}" class="btn btn-block bg-gradient-success">Добавить изделие</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -26,7 +26,7 @@
       <div class="container-fluid">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Товары</h3>
+          <h3 class="card-title">Изделия</h3>
         </div>
         <div class="card-body table-responsive p-0">
           <table class="table table-striped projects">
@@ -60,7 +60,7 @@
                   @endphp
                   <tr>
                       <td>
-                          {{ $loop->iteration }}
+                          {{ $product->sort }}
                       </td>
                       <td>
                           <div class="div__image">

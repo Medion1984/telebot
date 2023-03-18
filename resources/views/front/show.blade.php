@@ -50,12 +50,18 @@
               @include('front.parts.polimers')
 
               <div class="bg-gray py-2 px-3 mt-4">
+                @if($product->price_sale != 0)
                 <h2 class="mb-0">
-                <b>@money($product->price_sale)</b> <small>сом</small>
+                <b>От @money($product->price_sale)</b> <small>сом</small>
                 </h2>
                 <h4 class="mt-0">
                   <small>Цена за {{ $measure }} изделия. </small>
                 </h4>
+                @else 
+                <h4 class="mb-0">
+                <b>Цена договорная</b>
+                </h4>
+                @endif
               </div>
 
               <div class="mt-4">
@@ -67,8 +73,9 @@
 
             </div>
           </div>
+          @if(!empty($notices))
           @include('front.parts.notices', ['notices' => $notices])
-
+          @endif
         </div>
         <!-- /.card-body -->
       </div>

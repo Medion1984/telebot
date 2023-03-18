@@ -37,9 +37,15 @@
                         <h3 class="profile-username text-center">{{ $product->name }} {{ $product->marking }}</h3>
 
                         <ul class="list-group list-group-unbordered mb-3">
+                            @if($product->price != 0)
                             <li class="list-group-item text-center">
-                                <b>Цена @money($product->price_sale) за {{$measures[$product->measure]}}</b>
+                                <b>Цена от @money($product->price_sale) {{$measures[$product->measure]}}</b>
                             </li>
+                            @else
+                            <li class="list-group-item text-center">
+                                <b>Цена договорная</b>
+                            </li>
+                            @endif
                         </ul>
 
                         <div class="btn-group w-100">

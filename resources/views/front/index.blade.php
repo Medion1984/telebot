@@ -38,7 +38,7 @@
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item text-center">
-                            <b>Цена @money($product->price_sale) за {{$measures[$product->measure]}}</b>
+                            <b>Цена @money($product->price_sale) {{$measures[$product->measure] }}</b>
                         </li>
                     </ul>
 
