@@ -1,5 +1,7 @@
 @extends('front.layout')
-
+@section('title', '- Сварочные работы в Бишкеке' )
+@section('description', "Изготовление ворот, навесов, заборов в Бишкеке")
+@section('keywords', "ворота,навесы,заборы" )
 @section('content')
 <div class="content-wrapper">
     <div class="container">

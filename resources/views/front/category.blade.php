@@ -1,5 +1,7 @@
 @extends('front.layout')
-
+@section('title', '- ' . $category->name )
+@section('description', $category->description )
+@section('keywords', $category->keywords )
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">

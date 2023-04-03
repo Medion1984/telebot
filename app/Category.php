@@ -26,13 +26,14 @@ class Category extends Node
     
     protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth');
   
-    protected $fillable = ['name','slug','status','sort','parent_id'];
+    protected $fillable = ['name','slug','status','sort','parent_id', 'description', 'keywords'];
   
     public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'name',
+                'onUpdate' => true
             ]
         ];
     }

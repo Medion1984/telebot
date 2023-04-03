@@ -29,6 +29,14 @@
                     <input type="text" class="form-control" id="categoryName" placeholder="Введите имя категории" name="name" value="{{old('name')}}">
                   </div>
                   <div class="form-group">
+                    <label for="description">СЕО описание</label>
+                    <input type="text" class="form-control" id="description" placeholder="СЕО описание" name="description" value="{{old('description')}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="keywords">Ключевые слова</label>
+                    <input type="text" class="form-control" id="keywords" placeholder="Ключевые слова" name="keywords" value="{{old('keywords')}}">
+                  </div>
+                  <div class="form-group">
                     <label for="sorting">Сортировка</label>
                     <input type="number" class="form-control" id="sorting" placeholder="Сортировка" name="sort" value="1">
                   </div>
